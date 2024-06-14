@@ -1,0 +1,32 @@
+# Git
+alias co="git checkout"
+alias gs="git status"
+alias fix="git add .;git commit --amend --no-edit"
+
+function m(){
+  git add . -A
+  if [ -z "$1" ]
+    then
+      git commit -m "Progress"
+    else
+      git commit -m $1
+  fi
+}
+function push() {
+ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+ git push origin $CURRENT_BRANCH
+}
+alias p="push"
+function pull() {
+ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+ git pull origin $CURRENT_BRANCH
+}
+
+# Misc
+alias c='clear'
+alias ll="ls -lah"
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'

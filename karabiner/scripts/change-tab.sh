@@ -7,6 +7,11 @@ JQ="/opt/homebrew/bin/jq"
 # Get the currently focused window.
 CURRENT_WINDOW_ID=$($YABAI -m query --windows --window | $JQ '.id')
 
+# If CURRENT_WINDOW_ID is empty, set it to null
+if [ -z "$CURRENT_WINDOW_ID" ]; then
+  CURRENT_WINDOW_ID="null"
+fi
+
 # Get all the windows in the space and sort by something that makes sense visually.
 FORBIDDEN_APPS="Jumpcloud"
 WINDOWS_IN_SPACE=$($YABAI -m query --windows --space | $JQ -re --arg forbidden_app "$FORBIDDEN_APPS" '[ .[] | select(.app != $forbidden_app and .["is-minimized"] == false) ]')

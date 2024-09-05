@@ -30,3 +30,10 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
+
+alias subl="code"
+alias dc="docker compose"
+
+alias dkill="docker-compose stop && docker-compose rm -f  && dc up -d"
+
+alias uuidg="uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\n' | pbcopy"
